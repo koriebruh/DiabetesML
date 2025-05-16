@@ -1,0 +1,20 @@
+DATA SET:
+https://archive.ics.uci.edu/dataset/891/cdc+diabetes+health+indicators
+
+
+Flow we do not need to do
+1. import model
+2. Preprocessing
+3. Feature Selection Usage Random Forest
+4. Split Train/Test (75:25)
+5. Optional: LSTM Autoencoder untuk Feature Extraction
+
+Menerapkan Feature Fusion pada Data Kamu:
+Pada dataset kamu, kita bisa menggabungkan beberapa fitur menjadi satu fitur yang lebih kompak jika ada hubungan yang jelas antar fitur. Misalnya:
+Fusi antara BMI dan aktivitas fisik: Kombinasi dari BMI dan PhysActivity bisa menjadi fitur baru yang lebih informatif, misalnya BMI_Activity yang menggambarkan bagaimana berat badan dikombinasikan dengan tingkat aktivitas fisik.
+Fusi antara HighBP dan HighChol: Bisa menggabungkan keduanya dalam satu fitur bernama HighRisk yang menunjukkan apakah seseorang memiliki risiko tinggi (highBP atau highChol).
+
+6. Feature Fusion (Jika Gunakan LSTM atau PCA)
+7. Feature Selection Ulang (Jika pakai Fusion)
+8. Train Final Model (SVM + Cross Validation)
+9. Final Testing

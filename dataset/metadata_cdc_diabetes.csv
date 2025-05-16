@@ -1,0 +1,24 @@
+Key,Value
+uci_id,891
+name,CDC Diabetes Health Indicators
+repository_url,https://archive.ics.uci.edu/dataset/891/cdc+diabetes+health+indicators
+data_url,https://archive.ics.uci.edu/static/public/891/data.csv
+abstract,"The Diabetes Health Indicators Dataset contains healthcare statistics and lifestyle survey information about people in general along with their diagnosis of diabetes. The 35 features consist of some demographics, lab test results, and answers to survey questions for each patient. The target variable for classification is whether a patient has diabetes, is pre-diabetic, or healthy. "
+area,Health and Medicine
+tasks,['Classification']
+characteristics,"['Tabular', 'Multivariate']"
+num_instances,253680
+num_features,21
+feature_types,"['Categorical', 'Integer']"
+demographics,"['Sex', 'Age', 'Education Level', 'Income']"
+target_col,['Diabetes_binary']
+index_col,['ID']
+has_missing_values,no
+missing_values_symbol,
+year_of_dataset_creation,2017
+last_updated,Fri Nov 03 2023
+dataset_doi,10.24432/C53919
+creators,[]
+intro_paper,"{'ID': 308, 'type': 'NATIVE', 'title': 'Incidence of End-Stage Renal Disease Attributed to Diabetes Among Persons with Diagnosed Diabetes — United States and Puerto Rico, 2000–2014', 'authors': 'Nilka Rios Burrows, MPH; Israel Hora, PhD; Linda S. Geiss, MA; Edward W. Gregg, PhD; Ann Albright, PhD', 'venue': 'Morbidity and Mortality Weekly Report', 'year': 2017, 'journal': None, 'DOI': None, 'URL': 'https://www.cdc.gov/mmwr/volumes/66/wr/mm6643a2.htm', 'sha': None, 'corpus': None, 'arxiv': None, 'mag': None, 'acl': None, 'pmid': None, 'pmcid': None}"
+additional_info,"{'summary': 'Dataset link: https://www.cdc.gov/brfss/annual_data/annual_2014.html', 'purpose': 'To better understand the relationship between  lifestyle and diabetes in the US', 'funded_by': 'The CDC', 'instances_represent': 'Each row represents a person participating in this study.', 'recommended_data_splits': 'Cross validation or a fixed train-test split could be used.', 'sensitive_data': '- Gender\n- Income\n- Education level', 'preprocessing_description': 'Bucketing of age', 'variable_info': '- Diabetes diagnosis\n- Demographics (race, sex)\n- Personal information (income, educations)\n- Health history (drinking, smoking, mental health, physical health)', 'citation': None}"
+external_url,https://www.kaggle.com/datasets/alexteboul/diabetes-health-indicators-dataset
