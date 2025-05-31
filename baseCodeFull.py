@@ -1,3 +1,6 @@
+from google.colab import drive
+drive.mount('/content/drive')
+
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -16,7 +19,8 @@ from tensorflow.keras.layers import Input, Dense, LSTM, RepeatVector, TimeDistri
 # ----------------#
 # 1. IMPORT DATA  #
 # ----------------#
-data = pd.read_csv('dataset/cdc_diabetes_health_indicators.csv')
+
+data = pd.read_csv('/content/drive/MyDrive/ML KAH/dataset/cdc_diabetes_health_indicators.csv')
 print("Data shape:", data.shape)
 print("\nSample data:")
 print(data.head())
@@ -68,7 +72,7 @@ plt.figure(figsize=(10, 6))
 sns.barplot(x='Importance', y='Feature', data=feature_importances[:10])
 plt.title('Top 10 Feature Importances')
 plt.tight_layout()
-plt.savefig('feature_importances.png')
+plt.savefig('/content/drive/MyDrive/ML KAH/feature_importances.png')
 plt.close()
 
 # Pilih fitur berdasarkan threshold importance
@@ -139,7 +143,7 @@ plt.title('LSTM Autoencoder Loss')
 plt.ylabel('Loss')
 plt.xlabel('Epoch')
 plt.legend()
-plt.savefig('autoencoder_loss.png')
+plt.savefig('/content/drive/MyDrive/ML KAH/autoencoder_loss.png')
 plt.close()
 
 # Extract features using encoder
@@ -147,7 +151,6 @@ X_train_encoded = encoder_model.predict(X_train_lstm)
 X_test_encoded = encoder_model.predict(X_test_lstm)
 
 print(f"Encoded features shape: {X_train_encoded.shape}")
-
 
 # ----------------------------------------------------------#
 # 6. Feature Fusion (PCA + Random Forest selected features) #
@@ -206,6 +209,7 @@ if 'HighBP' in selected_features and 'HighChol' in selected_features:
     X_test_fused = X_test_fused_df.values
 
     print("Fitur baru HighRisk ditambahkan")
+
 
 # --------------------------------------------------#
 # 7. Feature Selection Ulang setelah Feature Fusion #
@@ -276,14 +280,13 @@ plt.figure(figsize=(10, 6))
 xgb.plot_importance(best_xgb, max_num_features=20)
 plt.title('XGBoost Feature Importances')
 plt.tight_layout()
-plt.savefig('xgboost_feature_importances.png')
+plt.savefig('/content/drive/MyDrive/ML KAH/xgboost_feature_importances.png')
 plt.close()
 
- # ------------------#
- # 9. Final Testing  #
- # ------------------#
+# -----------------#
+# 9. Final Testing #
+# -----------------#
 
-# 9. Final Testing
 print("\n=== 9. Final Testing ===")
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, roc_auc_score
 from sklearn.metrics import confusion_matrix, classification_report, roc_curve, auc
@@ -318,7 +321,7 @@ print(f"Avg Precision : {average_precision:.4f}")
 print("="*50)
 
 # Simpan hasil untuk jurnal
-with open('hasil_evaluasi_untuk_jurnal.txt', 'w') as f:
+with open('/content/drive/MyDrive/ML KAH/hasil_evaluasi_untuk_jurnal.txt', 'w') as f:
     f.write("HASIL EVALUASI MODEL UNTUK PUBLIKASI JURNAL\n")
     f.write("="*50 + "\n")
     f.write(f"Accuracy      : {accuracy:.4f}\n")
@@ -336,86 +339,17 @@ with open('hasil_evaluasi_untuk_jurnal.txt', 'w') as f:
 print("\nClassification Report:")
 print(classification_report(y_test, y_pred))
 
-# Confusion Matrix dengan persentase
-cm = confusion_matrix(y_test, y_pred)
-cm_sum = np.sum(cm, axis=1, keepdims=True)
-cm_perc = cm / cm_sum * 100
-
-# Plot confusion matrix
-plt.figure(figsize=(12, 10))
-
-plt.subplot(221)
-sns.heatmap(cm, annot=True, fmt='d', cmap='Blues', cbar=False)
-plt.title('Confusion Matrix (Count)')
-plt.ylabel('Aktual')
-plt.xlabel('Prediksi')
-
-plt.subplot(222)
-sns.heatmap(cm_perc, annot=True, fmt='.2f', cmap='Blues', cbar=False)
-plt.title('Confusion Matrix (Percentage %)')
-plt.ylabel('Aktual')
-plt.xlabel('Prediksi')
-
-# ROC Curve
-fpr, tpr, _ = roc_curve(y_test, y_pred_proba)
-roc_auc = auc(fpr, tpr)
-
-plt.subplot(223)
-plt.plot(fpr, tpr, color='darkorange', lw=2, label=f'ROC curve (area = {roc_auc:.3f})')
-plt.plot([0, 1], [0, 1], color='navy', lw=2, linestyle='--')
-plt.xlim([0.0, 1.0])
-plt.ylim([0.0, 1.05])
-plt.xlabel('False Positive Rate')
-plt.ylabel('True Positive Rate')
-plt.title('Receiver Operating Characteristic (ROC)')
-plt.legend(loc="lower right")
-
-# Precision-Recall Curve
-precision_curve, recall_curve, _ = precision_recall_curve(y_test, y_pred_proba)
-
-plt.subplot(224)
-plt.plot(recall_curve, precision_curve, color='green', lw=2,
-         label=f'PR curve (avg precision = {average_precision:.3f})')
-plt.xlabel('Recall')
-plt.ylabel('Precision')
-plt.title('Precision-Recall Curve')
-plt.legend(loc="lower left")
-
-plt.tight_layout()
-plt.savefig('model_evaluation_metrics.png', dpi=300, bbox_inches='tight')
-plt.close()
-
-plt.figure(figsize=(8, 6))
-plt.plot(fpr, tpr, color='darkorange', lw=2, label=f'ROC curve (area = {roc_auc:.2f})')
-plt.plot([0, 1], [0, 1], color='navy', lw=2, linestyle='--')
-plt.xlim([0.0, 1.0])
-plt.ylim([0.0, 1.05])
-plt.xlabel('False Positive Rate')
-plt.ylabel('True Positive Rate')
-plt.title('Receiver Operating Characteristic (ROC)')
-plt.legend(loc="lower right")
-plt.savefig('roc_curve.png')
-plt.close()
-
-# Tambahkan visualisasi XGBoost tree (optional)
-plt.figure(figsize=(15, 10))
-xgb.plot_tree(best_xgb, num_trees=0)
-plt.title('First Tree in XGBoost Model')
-plt.tight_layout()
-plt.savefig('xgboost_tree.png')
-plt.close()
-
 # Simpan model terbaik
 import joblib
 import pandas as pd
 from datetime import datetime
 
 # Simpan model
-joblib.dump(best_xgb, 'best_xgb_model.joblib')
-joblib.dump(scaler, 'scaler.joblib')
-joblib.dump(selector, 'feature_selector.joblib')
-joblib.dump(selector_after_fusion, 'feature_selector_after_fusion.joblib')
-joblib.dump(encoder_model, 'lstm_encoder.joblib')
+joblib.dump(best_xgb, '/content/drive/MyDrive/ML KAH/best_xgb_model.joblib')
+joblib.dump(scaler, '/content/drive/MyDrive/ML KAH/scaler.joblib')
+joblib.dump(selector, '/content/drive/MyDrive/ML KAH/feature_selector.joblib')
+joblib.dump(selector_after_fusion, '/content/drive/MyDrive/ML KAH/feature_selector_after_fusion.joblib')
+joblib.dump(encoder_model, '/content/drive/MyDrive/ML KAH/lstm_encoder.joblib')
 
 # Simpan hasil eksperimen untuk jurnal
 experiment_results = {
@@ -442,7 +376,7 @@ experiment_results = {
 pd.DataFrame([experiment_results]).to_csv('hasil_eksperimen_untuk_jurnal.csv', index=False)
 
 # Simpan hasil dengan format tabel untuk jurnal
-with open('hasil_table_untuk_jurnal.txt', 'w') as f:
+with open('/content/drive/MyDrive/ML KAH/hasil_table_untuk_jurnal.txt', 'w') as f:
     f.write("Table X: Performance metrics of the proposed hybrid model for diabetes prediction\n\n")
     f.write("| Metric | Value |\n")
     f.write("|--------|-------|\n")
