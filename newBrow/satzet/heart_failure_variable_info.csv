@@ -1,0 +1,14 @@
+name,role,type,demographic,description,units,missing_values
+age,Feature,Integer,Age,age of the patient,years,no
+anaemia,Feature,Binary,,decrease of red blood cells or hemoglobin,,no
+creatinine_phosphokinase,Feature,Integer,,level of the CPK enzyme in the blood,mcg/L,no
+diabetes,Feature,Binary,,if the patient has diabetes,,no
+ejection_fraction,Feature,Integer,,percentage of blood leaving the heart at each contraction,%,no
+high_blood_pressure,Feature,Binary,,if the patient has hypertension,,no
+platelets,Feature,Continuous,,platelets in the blood,kiloplatelets/mL,no
+serum_creatinine,Feature,Continuous,,level of serum creatinine in the blood,mg/dL,no
+serum_sodium,Feature,Integer,,level of serum sodium in the blood,mEq/L,no
+sex,Feature,Binary,Sex,woman or man,,no
+smoking,Feature,Binary,,if the patient smokes or not,,no
+time,Feature,Integer,,follow-up period,days,no
+death_event,Target,Binary,,if the patient died during the follow-up period,,no

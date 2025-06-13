@@ -24,7 +24,7 @@ from sklearn.model_selection import RandomizedSearchCV
 # ----------------#
 # 1. IMPORT DATA  #
 # ----------------#
-data = pd.read_csv('dataset/cdc_diabetes_health_indicators.csv')
+data = pd.read_csv('../dataset/cdc_diabetes_health_indicators.csv')
 print("Data shape:", data.shape)
 print("\nSample data:")
 print(data.head())
