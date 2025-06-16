@@ -1,0 +1,23 @@
+Metadata Dataset:
+uci_id: 360
+name: Air Quality
+repository_url: https://archive.ics.uci.edu/dataset/360/air+quality
+data_url: https://archive.ics.uci.edu/static/public/360/data.csv
+abstract: Contains the responses of a gas multisensor device deployed on the field in an Italian city. Hourly responses averages are recorded along with gas concentrations references from a certified analyzer. 
+area: Computer Science
+tasks: ['Regression']
+characteristics: ['Multivariate', 'Time-Series']
+num_instances: 9358
+num_features: 15
+feature_types: ['Real']
+demographics: []
+target_col: None
+index_col: None
+has_missing_values: no
+missing_values_symbol: None
+year_of_dataset_creation: 2008
+last_updated: Sun Mar 10 2024
+dataset_doi: 10.24432/C59K5F
+creators: ['Saverio Vito']
+intro_paper: {'ID': 420, 'type': 'NATIVE', 'title': 'On field calibration of an electronic nose for benzene estimation in an urban pollution monitoring scenario', 'authors': 'S. D. Vito, E. Massera, M. Piga, L. Martinotto, G. Francia', 'venue': 'Sensors and Actuators B: Chemical', 'year': 2008, 'journal': None, 'DOI': '10.1016/j.snb.2007.09.060', 'URL': 'https://www.semanticscholar.org/paper/a90a54a39ff934772df57771a0012981f355949d', 'sha': None, 'corpus': None, 'arxiv': None, 'mag': None, 'acl': None, 'pmid': None, 'pmcid': None}
+additional_info: {'summary': 'The dataset contains 9358 instances of hourly averaged responses from an array of 5 metal oxide chemical sensors embedded in an Air Quality Chemical Multisensor Device. The device was located on the field in a significantly polluted area, at road level,within an Italian city. Data were recorded from March 2004 to February 2005 (one year)representing the longest freely available recordings of on field deployed air quality chemical sensor devices responses. Ground Truth hourly averaged concentrations for CO, Non Metanic Hydrocarbons, Benzene, Total Nitrogen Oxides (NOx) and Nitrogen Dioxide (NO2)  and were provided by a co-located reference certified analyzer. Evidences of cross-sensitivities as well as both concept and sensor drifts are present as described in De Vito et al., Sens. And Act. B, Vol. 129,2,2008 (citation required) eventually affecting sensors concentration estimation capabilities. Missing values are tagged with -200 value.\r\nThis dataset can be used exclusively for research purposes. Commercial purposes are fully excluded.\r\n', 'purpose': None, 'funded_by': None, 'instances_represent': None, 'recommended_data_splits': None, 'sensitive_data': None, 'preprocessing_description': None, 'variable_info': '0 Date\t(DD/MM/YYYY)\r\n1 Time\t(HH.MM.SS)\r\n2 True hourly averaged concentration CO in mg/m^3  (reference analyzer)\r\n3 PT08.S1 (tin oxide)  hourly averaged sensor response (nominally  CO targeted)\t\r\n4 True hourly averaged overall Non Metanic HydroCarbons concentration in microg/m^3 (reference analyzer)\r\n5 True hourly averaged Benzene concentration  in microg/m^3 (reference analyzer)\r\n6 PT08.S2 (titania) hourly averaged sensor response (nominally NMHC targeted)\t\r\n7 True hourly averaged NOx concentration  in ppb (reference analyzer)\r\n8 PT08.S3 (tungsten oxide) hourly averaged sensor response (nominally NOx targeted) \r\n9 True hourly averaged NO2 concentration in microg/m^3 (reference analyzer)\t\r\n10 PT08.S4 (tungsten oxide) hourly averaged sensor response (nominally NO2 targeted)\t\r\n11 PT08.S5 (indium oxide) hourly averaged sensor response (nominally O3 targeted)\r\n12 Temperature in °C\t\r\n13 Relative Humidity (%) \t\r\n14 AH Absolute Humidity\r\n', 'citation': None}
