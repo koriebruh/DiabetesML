@@ -1,0 +1,8 @@
+Model,Best_Score,Best_Params
+GBM,0.9344837441725777,"{'learning_rate': 0.05, 'max_depth': 5, 'min_samples_leaf': 10, 'n_estimators': 500}"
+XGBoost,0.9351254320696991,"{'learning_rate': 0.05, 'max_depth': 3, 'n_estimators': 1000, 'subsample': 0.8}"
+RandomForest,0.922260349806044,"{'max_depth': 20, 'min_samples_split': 2, 'n_estimators': 500}"
+LogisticRegression,0.8586892857889673,"{'C': 10, 'penalty': 'l2', 'solver': 'liblinear'}"
+SVC,0.9073961709919564,"{'C': 10, 'kernel': 'rbf'}"
+NeuralNet,0.8951100621955737,"{'alpha': 0.1, 'hidden_layer_sizes': (100, 50)}"
+AdaBoost,0.9207334345661911,"{'learning_rate': 1.0, 'n_estimators': 500}"

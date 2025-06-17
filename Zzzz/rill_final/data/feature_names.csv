@@ -3,6 +3,9 @@ SeniorCitizen
 tenure
 MonthlyCharges
 TotalCharges
+Engagement_Score
+Service_Utilization
+Payment_Reliability
 gender_Male
 Partner_Yes
 Dependents_Yes
