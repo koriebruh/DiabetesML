@@ -1,6 +1,6 @@
 Model,Wilcoxon_p_value,Significant_at_0.05
-XGBoost,0.921875,False
-RandomForest,0.005859375,True
+GBM,0.322265625,False
+RandomForest,0.001953125,True
 LogisticRegression,0.001953125,True
 SVC,0.001953125,True
 NeuralNet,0.001953125,True
